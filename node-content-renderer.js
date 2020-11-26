@@ -54,42 +54,17 @@ class FileThemeNodeContentRenderer extends Component {
     // Construct the scaffold representing the structure of the tree
     const scaffold = [];
     lowerSiblingCounts.forEach((lowerSiblingCount, i) => {
+      let lineClass = '';
+      if (i > 0) {
+        lineClass = styles.lineFullVertical;
+      }
       scaffold.push(
         <div
           key={`pre_${1 + i}`}
           style={{ width: scaffoldBlockPxWidth }}
-          className={styles.lineBlock}
+          className={`${styles.lineBlock} ${lineClass}`}
         />
       );
-
-      if (treeIndex !== listIndex && i === swapDepth) {
-        // This row has been shifted, and is at the depth of
-        // the line pointing to the new destination
-        let highlightLineClass = '';
-
-        if (listIndex === swapFrom + swapLength - 1) {
-          // This block is on the bottom (target) line
-          // This block points at the target block (where the row will go when released)
-          highlightLineClass = styles.highlightBottomLeftCorner;
-        } else if (treeIndex === swapFrom) {
-          // This block is on the top (source) line
-          highlightLineClass = styles.highlightTopLeftCorner;
-        } else {
-          // This block is between the bottom and top
-          highlightLineClass = styles.highlightLineVertical;
-        }
-
-        scaffold.push(
-          <div
-            key={`highlight_${1 + i}`}
-            style={{
-              width: scaffoldBlockPxWidth,
-              left: scaffoldBlockPxWidth * i,
-            }}
-            className={`${styles.absoluteLineBlock} ${highlightLineClass}`}
-          />
-        );
-      }
     });
 
     const nodeContent = (

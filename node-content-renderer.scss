@@ -116,10 +116,10 @@
   padding: 0;
   z-index: 2;
   position: absolute;
-  top: 45%;
+  top: 35%;
   width: 30px;
   height: 30px;
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-15%, -45%, 0);
   cursor: pointer;
 
   &::after {
@@ -127,28 +127,20 @@
     position: absolute;
     transform-origin: 7px 4px;
     transform: translate3d(-50%, -20%, 0);
-    border: solid transparent 10px;
-    border-left-width: 7px;
-    border-right-width: 7px;
-    border-top-color: gray;
+    border: solid transparent 5px;
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-color: #b0b0b0;
   }
 
   &:hover::after {
-    border-top-color: black;
+    border-top-color: #606060;
   }
 
-  &:focus {
-    outline: none;
-
-    &::after {
-      filter: drop-shadow(0 0 1px #83bef9) drop-shadow(0 0 1px #83bef9)
-        drop-shadow(0 0 1px #83bef9);
-    }
-  }
 }
 
 .expandButton::after {
-  transform: translate3d(-50%, -20%, 0) rotateZ(-90deg);
+  transform: translate3d(-50%, -60%, 0) rotateZ(-90deg);
 }
 
 /**
@@ -177,11 +169,6 @@
   top: 0;
 }
 
-/* Highlight line for pointing to dragged row destination
-   ========================================================================== */
-$highlight-color: #36c2f6;
-$highlight-line-size: 6px; // Make it an even number for clean rendering
-
 /**
  * +--+--+
  * |  |  |
@@ -189,109 +176,12 @@ $highlight-line-size: 6px; // Make it an even number for clean rendering
  * |  |  |
  * +--+--+
  */
-.highlightLineVertical {
-  z-index: 3;
-
-  &::before {
-    position: absolute;
-    content: '';
-    background-color: $highlight-color;
-    width: $highlight-line-size;
-    margin-left: $highlight-line-size / -2;
-    left: 50%;
-    top: 0;
-    height: 100%;
-  }
-
-  @keyframes arrow-pulse {
-    $base-multiplier: 10;
-    0% {
-      transform: translate(0, 0);
-      opacity: 0;
-    }
-    30% {
-      transform: translate(0, 30% * $base-multiplier);
-      opacity: 1;
-    }
-    70% {
-      transform: translate(0, 70% * $base-multiplier);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(0, 100% * $base-multiplier);
-      opacity: 0;
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    height: 0;
-    margin-left: -1 * $highlight-line-size / 2;
-    left: 50%;
-    top: 0;
-    border-left: $highlight-line-size / 2 solid transparent;
-    border-right: $highlight-line-size / 2 solid transparent;
-    border-top: $highlight-line-size / 2 solid white;
-    animation: arrow-pulse 1s infinite linear both;
-  }
-}
-
-/**
- * +-----+
- * |     |
- * |  +--+
- * |  |  |
- * +--+--+
- */
-.highlightTopLeftCorner {
-  &::before {
-    z-index: 3;
-    content: '';
-    position: absolute;
-    border-top: solid $highlight-line-size $highlight-color;
-    border-left: solid $highlight-line-size $highlight-color;
-    box-sizing: border-box;
-    height: calc(50% + #{$highlight-line-size / 2});
-    top: 50%;
-    margin-top: $highlight-line-size / -2;
-    right: 0;
-    width: calc(50% + #{$highlight-line-size / 2});
-  }
-}
-
-/**
- * +--+--+
- * |  |  |
- * |  |  |
- * |  +->|
- * +-----+
- */
-.highlightBottomLeftCorner {
-  $arrow-size: 7px;
-  z-index: 3;
-
-  &::before {
-    content: '';
-    position: absolute;
-    border-bottom: solid $highlight-line-size $highlight-color;
-    border-left: solid $highlight-line-size $highlight-color;
-    box-sizing: border-box;
-    height: calc(100% + #{$highlight-line-size / 2});
-    top: 0;
-    right: $arrow-size;
-    width: calc(50% - #{$arrow-size - ($highlight-line-size / 2)});
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    height: 0;
-    right: 0;
-    top: 100%;
-    margin-top: -1 * $arrow-size;
-    border-top: $arrow-size solid transparent;
-    border-bottom: $arrow-size solid transparent;
-    border-left: $arrow-size solid $highlight-color;
-  }
+.lineFullVertical::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  width: 1px;
+  height: 25px;  
+  left: 25%;
+  border-left: 1px solid #d0d0e0;
 }

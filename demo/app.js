@@ -16,10 +16,13 @@ class App extends Component {
         { title: 'package.json' },
         {
           title: 'src',
-          isDirectory: true,
           expanded: true,
           children: [
-            { title: 'styles.css' },
+            { title: 'styles.css',
+              children: [
+                { title: 'styles_child.css' }
+              ]
+            },
             { title: 'index.js' },
             { title: 'reducers.js' },
             { title: 'actions.js' },
@@ -28,7 +31,6 @@ class App extends Component {
         },
         {
           title: 'tmp',
-          isDirectory: true,
           children: [
             { title: '12214124-log' },
             { title: 'drag-disabled-file', dragDisabled: true },
@@ -36,16 +38,53 @@ class App extends Component {
         },
         {
           title: 'build',
-          isDirectory: true,
           children: [{ title: 'react-sortable-tree.js' }],
         },
         {
           title: 'public',
-          isDirectory: true,
         },
         {
           title: 'node_modules',
-          isDirectory: true,
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
+        },        {
+          title: 'node_modules',
         },
       ],
     };
@@ -180,37 +219,21 @@ class App extends Component {
               })
             }
             canDrag={({ node }) => !node.dragDisabled}
-            canDrop={({ nextParent }) => !nextParent || nextParent.isDirectory}
+//            canDrop={({ nextParent }) => !nextParent || nextParent.isDirectory}
+            canDrop={({ nextParent }) => !nextParent || true }
             generateNodeProps={rowInfo => ({
-              icons: rowInfo.node.isDirectory
-                ? [
+              icons: [
                     <div
                       style={{
-                        borderLeft: 'solid 8px gray',
-                        borderBottom: 'solid 10px gray',
-                        marginRight: 10,
-                        boxSizing: 'border-box',
-                        width: 16,
-                        height: 12,
-                        filter: rowInfo.node.expanded
-                          ? 'drop-shadow(1px 0 0 gray) drop-shadow(0 1px 0 gray) drop-shadow(0 -1px 0 gray) drop-shadow(-1px 0 0 gray)'
-                          : 'none',
-                        borderColor: rowInfo.node.expanded ? 'white' : 'gray',
-                      }}
-                    />,
-                  ]
-                : [
-                    <div
-                      style={{
-                        border: 'solid 1px black',
-                        fontSize: 8,
+                        fontSize: 20,
                         textAlign: 'center',
                         marginRight: 10,
+                        marginTop: -5,
                         width: 12,
                         height: 16,
                       }}
                     >
-                      F
+                      &bull;
                     </div>,
                   ],
               buttons: [

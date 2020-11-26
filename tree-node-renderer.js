@@ -2,6 +2,18 @@ import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import styles from './tree-node-renderer.scss';
 
+function classnames(...classes) {
+  // Use Boolean constructor as a filter callback
+  // Allows for loose type truthy/falsey checks
+  // Boolean("") === false;
+  // Boolean(false) === false;
+  // Boolean(undefined) === false;
+  // Boolean(null) === false;
+  // Boolean(0) === false;
+  // Boolean("classname") === true;
+  return classes.filter(Boolean).join(' ');
+}
+
 class FileThemeTreeNodeRenderer extends Component {
   render() {
     const {
@@ -27,18 +39,18 @@ class FileThemeTreeNodeRenderer extends Component {
 
     return connectDropTarget(
       <div {...otherProps} className={styles.node}>
-        {Children.map(children, child =>
-          cloneElement(child, {
-            isOver,
-            canDrop,
-            draggedNode,
-            lowerSiblingCounts,
-            listIndex,
-            swapFrom,
-            swapLength,
-            swapDepth,
-          })
-        )}
+          {Children.map(children, child =>
+            cloneElement(child, {
+              isOver,
+              canDrop,
+              draggedNode,
+              lowerSiblingCounts,
+              listIndex,
+              swapFrom,
+              swapLength,
+              swapDepth,
+            })
+          )}
       </div>
     );
   }
