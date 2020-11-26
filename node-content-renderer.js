@@ -110,7 +110,10 @@ class FileThemeNodeContentRenderer extends Component {
                     : '') +
                   (isSearchMatch ? ` ${styles.rowSearchMatch}` : '') +
                   (isSearchFocus ? ` ${styles.rowSearchFocus}` : '') +
-                  (className ? ` ${className}` : '')
+                  (className ? ` ${className}` : '') + 
+                  (toggleChildrenVisibility &&
+                    node.children &&
+                    node.children.length > 0 && (node.expanded ? ` ${styles.collapseButtonIcon}` : ` ${styles.expandButtonIcon}`))
                 }
                 style={{
                   opacity: isDraggedDescendant ? 0.5 : 1,
