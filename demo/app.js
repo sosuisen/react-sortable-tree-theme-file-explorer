@@ -12,6 +12,13 @@ class App extends Component {
       searchFocusIndex: 0,
       searchFoundCount: null,
       treeData: [
+        { title: 'memo', 
+          expanded: true,
+          children: [
+          {
+            title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Vivamus ac leo pretium faucibus. Morbi scelerisque luctus velit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Nullam sit amet magna in magna gravida vehicula. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Nullam faucibus mi quis velit. Mauris elementum mauris vitae tortor. Pellentesque sapien. Sed convallis magna eu sem. Aliquam erat volutpat. Nullam faucibus mi quis velit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Fusce aliquam vestibulum ipsum. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Vivamus luctus egestas leo. '
+          }]
+        },
         { title: '.gitignore' },
         { title: 'package.json' },
         {
@@ -206,6 +213,7 @@ class App extends Component {
 
         <div style={{ flex: '1 0 50%', padding: '0 0 0 15px' }}>
           <SortableTree
+            isDynamicRowHeight
             theme={FileExplorerTheme}
             treeData={treeData}
             onChange={this.updateTreeData}
