@@ -49,11 +49,6 @@
     "react-dnd-scrollzone": "^4.0.0",
     "react-virtualized": "^9.13.0"
   },
-  "peerDependencies": {
-    "react": "^15.3.0 || ^16.0.0",
-    "react-dom": "^15.3.0 || ^16.0.0",
-    "react-sortable-tree": "^2.2.0"
-  },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
