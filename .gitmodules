@@ -1,0 +1,3 @@
+[submodule "external_modules/react-sortable-tree"]
+	path = external_modules/react-sortable-tree
+	url = https://github.com/sosuisen/react-sortable-tree
